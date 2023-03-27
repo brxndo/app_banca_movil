@@ -35,17 +35,23 @@ class _SimuladorPageState extends State<SimuladorPage>
           child: AppBar(
             title: const Text(
               'Simuladores',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Color.fromRGBO(172, 30, 35, 1)),
             ),
-            backgroundColor: Color.fromRGBO(172, 30, 35, 1),
+            backgroundColor: Colors.white,
             iconTheme: const IconThemeData(
-              color: Colors.white,
+              color: Color.fromRGBO(172, 30, 35, 1),
             ),
+            // actions: [
+            //   Image.asset(
+            //     'assets/images/logo2.png',
+            //     scale: 6,
+            //   ),
+            // ],
             bottom: TabBar(
               controller: _tabController,
               indicator: const PointTabIndicator(
                 position: PointTabIndicatorPosition.bottom,
-                color: Colors.white,
+                color: Color.fromRGBO(172, 30, 35, 1),
                 insets: EdgeInsets.only(bottom: 6),
               ),
               tabs: titulo.map((item) {
@@ -54,7 +60,7 @@ class _SimuladorPageState extends State<SimuladorPage>
                   child: Text(
                     item,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Color.fromRGBO(172, 30, 35, 1),
                     ),
                   ),
                 );

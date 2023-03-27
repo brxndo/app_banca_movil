@@ -14,7 +14,7 @@ class NotificationsController {
       action: SnackBarAction(
         label: 'Ocultar',
         disabledTextColor: Colors.white,
-        textColor: const Color.fromRGBO(172, 30, 35, 1),
+        textColor: Colors.white,
         onPressed: () {},
       ),
     );

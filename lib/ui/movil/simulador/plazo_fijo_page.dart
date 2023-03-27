@@ -92,7 +92,10 @@ class _PlazoFijoPageState extends ConsumerState<PlazoFijoPage> {
                 ),
               ),
             ),
-            const Text('Frecuencia de Pago:'),
+            const Text(
+              'Frecuencia de Pago:',
+              style: TextStyle(color: Colors.black45),
+            ),
             Card(
               elevation: 3,
               child: DropdownButton(
@@ -129,7 +132,10 @@ class _PlazoFijoPageState extends ConsumerState<PlazoFijoPage> {
             const SizedBox(
               height: 30,
             ),
-            const Text('Plazo (días):'),
+            const Text(
+              'Plazo (días):',
+              style: TextStyle(color: Colors.black45),
+            ),
             Card(
               elevation: 3,
               child: DropdownButton(
@@ -166,6 +172,7 @@ class _PlazoFijoPageState extends ConsumerState<PlazoFijoPage> {
               height: 30,
             ),
             SizedBox(
+              height: MediaQuery.of(context).size.width * 0.1,
               width: MediaQuery.of(context).size.width * 0.53,
               child: MaterialButton(
                 onPressed: () {

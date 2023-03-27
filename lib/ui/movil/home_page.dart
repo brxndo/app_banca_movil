@@ -50,6 +50,12 @@ class HomePage extends StatelessWidget {
                 'Simulador',
               ),
             ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed('agencias'),
+              child: const Text(
+                'Agencias',
+              ),
+            ),
           ],
         ),
       ),

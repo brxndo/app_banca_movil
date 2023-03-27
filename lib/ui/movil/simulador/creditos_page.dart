@@ -338,10 +338,14 @@ class _CreditosPageState extends State<CreditosPage> {
                 ),
               ),
             ),
-            const Text('Tipo de Crédito:'),
+            const Text(
+              'Tipo de Crédito:',
+              style: TextStyle(color: Colors.black45),
+            ),
             Card(
               elevation: 3,
               child: DropdownButton(
+                dropdownColor: Colors.white,
                 elevation: 0,
                 value: credito,
                 alignment: AlignmentDirectional.center,
@@ -375,11 +379,15 @@ class _CreditosPageState extends State<CreditosPage> {
             const SizedBox(
               height: 30,
             ),
-            const Text('Frecuencia de Pago:'),
+            const Text(
+              'Frecuencia de Pago:',
+              style: TextStyle(color: Colors.black45),
+            ),
             Card(
               elevation: 3,
               child: DropdownButton(
                 elevation: 0,
+                dropdownColor: Colors.white,
                 value: frecuencia,
                 alignment: AlignmentDirectional.center,
                 icon: const Icon(
@@ -411,11 +419,15 @@ class _CreditosPageState extends State<CreditosPage> {
             const SizedBox(
               height: 30,
             ),
-            const Text('Tipo de Cuota:'),
+            const Text(
+              'Tipo de Cuota:',
+              style: TextStyle(color: Colors.black45),
+            ),
             Card(
               elevation: 3,
               child: DropdownButton(
                 elevation: 0,
+                dropdownColor: Colors.white,
                 value: cuota,
                 alignment: AlignmentDirectional.center,
                 icon: const Icon(
@@ -447,6 +459,7 @@ class _CreditosPageState extends State<CreditosPage> {
               height: 30,
             ),
             SizedBox(
+              height: MediaQuery.of(context).size.width * 0.1,
               width: MediaQuery.of(context).size.width * 0.57,
               child: MaterialButton(
                 onPressed: () {

@@ -1,3 +1,4 @@
+import 'package:app_banca_virtual_movil_2/ui/movil/agencias/agencias_page.dart';
 import 'package:app_banca_virtual_movil_2/ui/movil/home_page.dart';
 import 'package:app_banca_virtual_movil_2/ui/movil/login_page.dart';
 import 'package:app_banca_virtual_movil_2/ui/movil/posicion_consolidada_page.dart';
@@ -36,6 +37,9 @@ class AppArquitecturaLimpia2 extends StatelessWidget {
           case 'simulador':
             return MaterialPageRoute(
                 builder: (context) => const SimuladorPage());
+          case 'agencias':
+            return MaterialPageRoute(
+                builder: (context) => const AgenciasPage());
           default:
             return MaterialPageRoute(builder: (context) => const HomePage());
         }
