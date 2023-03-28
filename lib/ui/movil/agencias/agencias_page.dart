@@ -314,7 +314,7 @@ class _FooterInformation extends ConsumerWidget {
           height: 10,
         ),
         Container(
-          height: MediaQuery.of(context).size.height * 0.08,
+          height: MediaQuery.of(context).size.height * 0.1,
           width: MediaQuery.of(context).size.width * 0.85,
           child: Card(
             elevation: 5,
@@ -327,7 +327,7 @@ class _FooterInformation extends ConsumerWidget {
                 ),
               ),
               Text(
-                'LUNES A VIERNES:   8H30 - 17H30\nSÁBADOS:                  8H30 - 14H00',
+                'LUNES A VIERNES:   8H30 - 17H30\nSÁBADOS:                8H30 - 14H00',
                 style: TextStyle(
                   fontSize: 14,
                 ),

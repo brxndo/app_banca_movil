@@ -1,11 +1,18 @@
+import 'package:app_banca_virtual_movil_2/config/providers/change_notifier/theme_change_notifier.dart';
 import 'package:app_banca_virtual_movil_2/config/providers/posicion_consolidada_provider.dart';
 import 'package:app_banca_virtual_movil_2/domain/models/posicion_consolidada/posicion_consolidada.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:rolling_switch/rolling_switch.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../config/providers/app_provider.dart';
 import '../../config/providers/usuario_provider.dart';
 import '../../infraestructure/helpers/auth_helper.dart';
+import '../theme/app_theme.dart';
+import '../theme/app_theme_dark.dart';
+import '../utils/global.dart';
 
 class PosicionConsolidadaPage extends ConsumerStatefulWidget {
   PosicionConsolidadaPage({super.key});
@@ -116,12 +123,44 @@ class _PosicionConsolidadaPageState
                                 onPressed: () async {
                                   await AuthHelper(secureStorage: _storage)
                                       .clearAuthToken();
+
+                                  await AuthHelper(secureStorage: _storage)
+                                      .clearIdUsuario();
+
                                   Navigator.of(context).pushNamedAndRemoveUntil(
-                                      'home', ModalRoute.withName('/'));
+                                      'index', ModalRoute.withName('/'));
                                 },
                                 icon: const Icon(Icons.logout),
                                 label: const Text('Cerrar Sesión'),
-                              )
+                              ),
+                              const SizedBox(
+                                height: 50,
+                              ),
+                              RollingSwitch.icon(
+                                initialState: globalIsDarkSelected,
+                                width: 160,
+                                onChanged: (bool value) {
+                                  final theme = ref.watch(themeProvider);
+                                  setState(() {
+                                    globalIsDarkSelected = value;
+                                  });
+                                  onThemeChanged(value, theme);
+                                },
+                                rollingInfoLeft: RollingIconInfo(
+                                  icon: Icons.dark_mode_outlined,
+                                  text: Text(
+                                    'Desactivado',
+                                    style: TextStyle(
+                                        color: AppTheme.backgorundColor),
+                                  ),
+                                  backgroundColor: AppTheme.secondColor,
+                                ),
+                                rollingInfoRight: RollingIconInfo(
+                                  icon: Icons.check,
+                                  backgroundColor: AppTheme.primaryColor,
+                                  text: const Text('Activado'),
+                                ),
+                              ),
                             ],
                           ),
                         );
@@ -133,5 +172,14 @@ class _PosicionConsolidadaPageState
                 return const CircularProgressIndicator();
               })),
     );
+  }
+
+  void onThemeChanged(bool value, ThemeChangeNotifier themeNotifier) async {
+    (value)
+        ? themeNotifier.setTheme(AppThemeDark.theme)
+        : themeNotifier.setTheme(AppTheme.theme);
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setBool('darkMode', value);
+    globalIsDarkSelected = value;
   }
 }

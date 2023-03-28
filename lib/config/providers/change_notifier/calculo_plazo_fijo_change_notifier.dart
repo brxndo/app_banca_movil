@@ -113,6 +113,19 @@ class CalculoPlazoFijoChangeNotifier extends ChangeNotifier {
             interes = '9.25';
           }
           break;
+        case '300':
+          if (montoPF.toDouble()! >= 100 && montoPF.toDouble()! <= 2000) {
+            interes = '7.75';
+          } else if (montoPF.toDouble()! >= 2001 &&
+              montoPF.toDouble()! <= 5000) {
+            interes = '8.00';
+          } else if (montoPF.toDouble()! >= 5001 &&
+              montoPF.toDouble()! <= 10000) {
+            interes = '8.25';
+          } else if (montoPF.toDouble()! > 10000) {
+            interes = '9.25';
+          }
+          break;
         case '330':
           if (montoPF.toDouble()! >= 100 && montoPF.toDouble()! <= 2000) {
             interes = '7.75';

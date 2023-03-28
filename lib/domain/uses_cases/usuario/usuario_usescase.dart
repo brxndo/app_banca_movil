@@ -8,4 +8,12 @@ class UsuarioUsesCase {
   Future<Map<String, dynamic>> login(String username, String password) {
     return usuarioGateway.login(username, password);
   }
+
+  Future<bool> soportaAuthWithCredentials() {
+    return usuarioGateway.supportAuthWithCredentials();
+  }
+
+  Future<String> autenticacionBiometrica() {
+    return usuarioGateway.autenticacionBiometrica();
+  }
 }

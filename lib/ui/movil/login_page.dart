@@ -168,7 +168,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         respuesta['id_usuario'],
                         respuesta['token_usuario'],
                       );
-                      print(respuesta);
                     },
               child: Container(
                 padding:

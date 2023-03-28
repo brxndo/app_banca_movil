@@ -1,9 +1,13 @@
 import 'dart:convert';
-
+import 'package:flutter/services.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:local_auth_android/local_auth_android.dart';
 import 'package:app_banca_virtual_movil_2/domain/models/usuario/gateway/usuario_gateway.dart';
 import 'package:http/http.dart' as http;
 
 class UsuarioAdapterApi extends UsuarioGateway {
+  final LocalAuthentication auth = LocalAuthentication();
+
   @override
   Future<Map<String, dynamic>> login(String username, String password) async {
     Map<String, String> credenciales = {
@@ -54,5 +58,54 @@ class UsuarioAdapterApi extends UsuarioGateway {
     // } else {
     //   return res;
     // }
+  }
+
+  @override
+  Future<bool> supportAuthWithCredentials() async {
+    bool isSupported = await auth.isDeviceSupported();
+    bool canCheckBiometrics;
+
+    try {
+      canCheckBiometrics = await auth.canCheckBiometrics;
+    } on PlatformException catch (e) {
+      canCheckBiometrics = false;
+    }
+
+    if (isSupported && canCheckBiometrics) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  Future<String> autenticacionBiometrica() async {
+    bool authenticated = false;
+
+    try {
+      authenticated = await auth.authenticate(
+        authMessages: <AuthMessages>[
+          const AndroidAuthMessages(
+            signInTitle: 'Autenticación Requerida',
+            biometricHint: 'Verifica tu identidad',
+            cancelButton: 'Cancelar',
+          )
+        ],
+        localizedReason:
+            'Escanee su huella digital (o su rostro) para autenticarse',
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+        ),
+      );
+    } on PlatformException catch (e) {
+      print(e);
+      return 'error';
+    }
+
+    if (authenticated) {
+      return 'authorized';
+    } else {
+      return 'not authorized';
+    }
   }
 }

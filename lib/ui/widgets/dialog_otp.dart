@@ -30,14 +30,14 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
         textAlign: TextAlign.center,
       ),
       content: Container(
-        height: 250,
+        height: 260,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const SizedBox(height: 20),
             const Text(
               "Se envió un código de seguridad al correo electrónico y/o celular registrados para verificar su identidad.\nIntroduce el código de seguridad para poder continuar",
-              style: TextStyle(color: Colors.black54),
+              style: TextStyle(fontSize: 14, color: Colors.black54),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -82,10 +82,9 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
         Container(
           height: 40,
           decoration: BoxDecoration(
-              border: Border.all(color: Color.fromRGBO(172, 30, 35, 1)),
-              borderRadius: const BorderRadius.all(
-                  Radius.circular(10) //                 <--- border radius here
-                  )),
+            border: Border.all(color: Color.fromRGBO(172, 30, 35, 1)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
           child: TextButton.icon(
             icon: const Icon(
               Icons.close,
@@ -106,8 +105,9 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
         Container(
           height: 40,
           decoration: const BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: Colors.black,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
           child: TextButton.icon(
             icon: const Icon(
               Icons.check,
