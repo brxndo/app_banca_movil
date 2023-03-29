@@ -141,9 +141,9 @@ class _PosicionConsolidadaPageState
                                 width: 160,
                                 onChanged: (bool value) {
                                   final theme = ref.watch(themeProvider);
-                                  setState(() {
-                                    globalIsDarkSelected = value;
-                                  });
+
+                                  globalIsDarkSelected = value;
+
                                   onThemeChanged(value, theme);
                                 },
                                 rollingInfoLeft: RollingIconInfo(
@@ -176,8 +176,8 @@ class _PosicionConsolidadaPageState
 
   void onThemeChanged(bool value, ThemeChangeNotifier themeNotifier) async {
     (value)
-        ? themeNotifier.setTheme(AppThemeDark.theme)
-        : themeNotifier.setTheme(AppTheme.theme);
+        ? themeNotifier.themeData = AppThemeDark.theme
+        : themeNotifier.themeData = AppTheme.theme;
     var prefs = await SharedPreferences.getInstance();
     prefs.setBool('darkMode', value);
     globalIsDarkSelected = value;

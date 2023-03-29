@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
 
+import '../../theme/app_theme.dart';
+import '../../theme/app_theme_dark.dart';
+import '../../utils/global.dart';
 import 'creditos_page.dart';
 import 'plazo_fijo_page.dart';
 
@@ -33,20 +36,22 @@ class _SimuladorPageState extends State<SimuladorPage>
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100.0),
           child: AppBar(
-            title: const Text(
+            title: Text(
               'Simuladores',
-              style: TextStyle(color: Color.fromRGBO(172, 30, 35, 1)),
+              style: TextStyle(
+                color: globalIsDarkSelected
+                    ? AppThemeDark.textColor
+                    : AppTheme.primaryColor,
+              ),
             ),
-            backgroundColor: Colors.white,
-            iconTheme: const IconThemeData(
-              color: Color.fromRGBO(172, 30, 35, 1),
+            backgroundColor: globalIsDarkSelected
+                ? Color.fromARGB(255, 50, 50, 50)
+                : AppTheme.backgorundColor,
+            iconTheme: IconThemeData(
+              color: globalIsDarkSelected
+                  ? AppThemeDark.textColor
+                  : AppTheme.primaryColor,
             ),
-            // actions: [
-            //   Image.asset(
-            //     'assets/images/logo2.png',
-            //     scale: 6,
-            //   ),
-            // ],
             bottom: TabBar(
               controller: _tabController,
               indicator: const PointTabIndicator(
@@ -59,8 +64,10 @@ class _SimuladorPageState extends State<SimuladorPage>
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   child: Text(
                     item,
-                    style: const TextStyle(
-                      color: Color.fromRGBO(172, 30, 35, 1),
+                    style: TextStyle(
+                      color: globalIsDarkSelected
+                          ? AppThemeDark.textColor
+                          : AppTheme.primaryColor,
                     ),
                   ),
                 );

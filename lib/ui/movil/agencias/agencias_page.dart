@@ -8,6 +8,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../config/providers/agencias_provider.dart';
+import '../../theme/app_theme.dart';
+import '../../theme/app_theme_dark.dart';
+import '../../utils/global.dart';
 
 List<List<dynamic>> agencias = [
   [
@@ -172,9 +175,16 @@ class _AgenciasPageState extends ConsumerState<AgenciasPage> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: globalIsDarkSelected
+                            ? AppThemeDark.backgorundColor
+                            : AppTheme.backgorundColor,
                         borderRadius: BorderRadius.circular(7),
-                        border: Border.all(color: Colors.black, width: 1),
+                        border: Border.all(
+                          color: globalIsDarkSelected
+                              ? AppTheme.backgorundColor
+                              : AppThemeDark.backgorundColor,
+                          width: 1,
+                        ),
                       ),
                       width: double.infinity,
                       height: double.infinity,
@@ -248,13 +258,21 @@ class _AgenciasPageState extends ConsumerState<AgenciasPage> {
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60.0),
           child: AppBar(
-            title: const Text(
+            title: Text(
               'Agencias y Contactos',
-              style: TextStyle(color: Color.fromRGBO(172, 30, 35, 1)),
+              style: TextStyle(
+                color: globalIsDarkSelected
+                    ? AppThemeDark.textColor
+                    : AppTheme.primaryColor,
+              ),
             ),
-            backgroundColor: Colors.white,
-            iconTheme: const IconThemeData(
-              color: Color.fromRGBO(172, 30, 35, 1),
+            backgroundColor: globalIsDarkSelected
+                ? const Color.fromARGB(255, 50, 50, 50)
+                : AppTheme.backgorundColor,
+            iconTheme: IconThemeData(
+              color: globalIsDarkSelected
+                  ? AppThemeDark.textColor
+                  : AppTheme.primaryColor,
             ),
           )),
       body: SafeArea(
@@ -273,7 +291,7 @@ class _AgenciasPageState extends ConsumerState<AgenciasPage> {
                         _controller.complete(controller);
                         _customInfoWindowController.googleMapController =
                             controller;
-                        ref.watch(agenciasProvider).setMapStyle();
+                        ref.watch(agenciasProvider).setMapStyle(_controller);
                       },
                       onTap: (position) {
                         _customInfoWindowController.hideInfoWindow!();
@@ -285,7 +303,7 @@ class _AgenciasPageState extends ConsumerState<AgenciasPage> {
                     ),
                     CustomInfoWindow(
                       controller: _customInfoWindowController,
-                      height: MediaQuery.of(context).size.height * 0.12,
+                      height: MediaQuery.of(context).size.height * 0.13,
                       width: MediaQuery.of(context).size.width * 0.8,
                       offset: 50,
                     ),
@@ -327,7 +345,7 @@ class _FooterInformation extends ConsumerWidget {
                 ),
               ),
               Text(
-                'LUNES A VIERNES:   8H30 - 17H30\nSÁBADOS:                8H30 - 14H00',
+                'LUNES A VIERNES:   8H30 - 17H30\nSÁBADOS:               8H30 - 14H00',
                 style: TextStyle(
                   fontSize: 14,
                 ),
@@ -360,22 +378,21 @@ class _FooterInformation extends ConsumerWidget {
                   size: 20,
                 ),
               ),
-              label: const Text(
+              label: Text(
                 'Facebook',
                 style: TextStyle(
-                    // color: globalIsDarkSelected
-                    //     ? AppThemeDark.textColor
-                    //     : AppTheme.textColor,
-                    ),
+                  color: globalIsDarkSelected
+                      ? AppThemeDark.textColor
+                      : AppTheme.textColor,
+                ),
               ),
               onPressed: () {
                 ref.watch(agenciasProvider).abrirUrl(
                     'fb://facewebmodal/f?href=https://www.facebook.com/coopdaquilema');
               },
-              backgroundColor: Colors.white,
-              // backgroundColor: globalIsDarkSelected
-              //     ? AppThemeDark.backgorundColor
-              //     : AppTheme.backgorundColor,
+              backgroundColor: globalIsDarkSelected
+                  ? AppThemeDark.backgorundColor
+                  : AppTheme.backgorundColor,
               shape: const StadiumBorder(
                   side: BorderSide(
                 width: 1,
@@ -394,23 +411,22 @@ class _FooterInformation extends ConsumerWidget {
                   size: 17,
                 ),
               ),
-              label: const Text(
+              label: Text(
                 'Twitter',
                 style: TextStyle(
-                    // color: globalIsDarkSelected
-                    //     ? AppThemeDark.textColor
-                    //     : AppTheme.textColor,
-                    ),
+                  color: globalIsDarkSelected
+                      ? AppThemeDark.textColor
+                      : AppTheme.textColor,
+                ),
               ),
               onPressed: () {
                 ref
                     .watch(agenciasProvider)
                     .abrirUrl('https://twitter.com/coopdaquilema');
               },
-              backgroundColor: Colors.white,
-              // backgroundColor: globalIsDarkSelected
-              //     ? AppThemeDark.backgorundColor
-              //     : AppTheme.backgorundColor,
+              backgroundColor: globalIsDarkSelected
+                  ? AppThemeDark.backgorundColor
+                  : AppTheme.backgorundColor,
               shape: const StadiumBorder(
                   side: BorderSide(
                 width: 1,
@@ -429,23 +445,22 @@ class _FooterInformation extends ConsumerWidget {
                   size: 15,
                 ),
               ),
-              label: const Text(
+              label: Text(
                 'YouTube',
                 style: TextStyle(
-                    // color: globalIsDarkSelected
-                    //     ? AppThemeDark.textColor
-                    //     : AppTheme.textColor,
-                    ),
+                  color: globalIsDarkSelected
+                      ? AppThemeDark.textColor
+                      : AppTheme.textColor,
+                ),
               ),
               onPressed: () {
                 ref
                     .watch(agenciasProvider)
                     .abrirUrl('https://www.youtube.com/@coopdaquilema8749');
               },
-              backgroundColor: Colors.white,
-              // backgroundColor: globalIsDarkSelected
-              //     ? AppThemeDark.backgorundColor
-              //     : AppTheme.backgorundColor,
+              backgroundColor: globalIsDarkSelected
+                  ? AppThemeDark.backgorundColor
+                  : AppTheme.backgorundColor,
               shape: const StadiumBorder(
                   side: BorderSide(
                 width: 1,
@@ -469,23 +484,22 @@ class _FooterInformation extends ConsumerWidget {
                   size: 20,
                 ),
               ),
-              label: const Text(
+              label: Text(
                 'Instagram',
                 style: TextStyle(
-                    // color: globalIsDarkSelected
-                    //     ? AppThemeDark.textColor
-                    //     : AppTheme.textColor,
-                    ),
+                  color: globalIsDarkSelected
+                      ? AppThemeDark.textColor
+                      : AppTheme.textColor,
+                ),
               ),
               onPressed: () {
                 ref
                     .watch(agenciasProvider)
                     .abrirUrl('https://www.instagram.com/coopdaquilema');
               },
-              backgroundColor: Colors.white,
-              // backgroundColor: globalIsDarkSelected
-              //     ? AppThemeDark.backgorundColor
-              //     : AppTheme.backgorundColor,
+              backgroundColor: globalIsDarkSelected
+                  ? AppThemeDark.backgorundColor
+                  : AppTheme.backgorundColor,
               shape: const StadiumBorder(
                   side: BorderSide(
                 width: 1,
@@ -504,23 +518,22 @@ class _FooterInformation extends ConsumerWidget {
                   size: 17,
                 ),
               ),
-              label: const Text(
+              label: Text(
                 'Web',
                 style: TextStyle(
-                    // color: globalIsDarkSelected
-                    //     ? AppThemeDark.textColor
-                    //     : AppTheme.textColor,
-                    ),
+                  color: globalIsDarkSelected
+                      ? AppThemeDark.textColor
+                      : AppTheme.textColor,
+                ),
               ),
               onPressed: () {
                 ref
                     .watch(agenciasProvider)
                     .abrirUrl('https://www.coopdaquilema.com/');
               },
-              backgroundColor: Colors.white,
-              // backgroundColor: globalIsDarkSelected
-              //     ? AppThemeDark.backgorundColor
-              //     : AppTheme.backgorundColor,
+              backgroundColor: globalIsDarkSelected
+                  ? AppThemeDark.backgorundColor
+                  : AppTheme.backgorundColor,
               shape: const StadiumBorder(
                   side: BorderSide(
                 width: 1,

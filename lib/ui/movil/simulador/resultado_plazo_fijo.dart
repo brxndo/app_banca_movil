@@ -1,3 +1,6 @@
+import 'package:app_banca_virtual_movil_2/ui/theme/app_theme.dart';
+import 'package:app_banca_virtual_movil_2/ui/theme/app_theme_dark.dart';
+import 'package:app_banca_virtual_movil_2/ui/utils/global.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/ticket_painter.dart';
@@ -17,8 +20,10 @@ class ResultadoPlazoFijo extends StatelessWidget {
           painter: TicketPainter(
             height: MediaQuery.of(context).size.height * 0.55,
             width: MediaQuery.of(context).size.width * 0.8,
-            borderColor: Color.fromRGBO(172, 30, 35, 1),
-            bgColor: ThemeData.light().scaffoldBackgroundColor,
+            borderColor: AppTheme.textColor,
+            bgColor: globalIsDarkSelected
+                ? Color.fromARGB(255, 50, 50, 50)
+                : AppTheme.backgorundColor,
           ),
           child: Column(
             children: [

@@ -1,3 +1,4 @@
+import 'package:app_banca_virtual_movil_2/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:otp_text_field/otp_field_style.dart';
@@ -24,13 +25,13 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
       contentPadding: const EdgeInsets.symmetric(horizontal: 15),
       backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(32.0))),
+          borderRadius: BorderRadius.all(Radius.circular(10))),
       title: const Text(
         "Código de Seguridad",
         textAlign: TextAlign.center,
       ),
       content: Container(
-        height: 260,
+        height: MediaQuery.of(context).size.height * 0.36,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -67,14 +68,70 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
             ),
             const SizedBox(height: 10),
             IconButton(
-                onPressed: () {
-                  otpFieldController.clear();
-                  otpFieldController.setFocus(0);
-                },
-                icon: const Icon(
-                  Icons.backspace,
-                  size: 35,
-                )),
+              onPressed: () {
+                otpFieldController.clear();
+                otpFieldController.setFocus(0);
+              },
+              tooltip: 'Borrar',
+              icon: const Icon(
+                Icons.backspace,
+                size: 35,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '¿No recibiste el código? ',
+                  style: TextStyle(fontSize: 12),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        title: const Text(
+                          '!Código reenviado!',
+                        ),
+                        content: Container(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: const [
+                                Text(
+                                    'Revise su celular y/o correo electrónico'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text(
+                                'OK',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 202, 88, 110)),
+                              )),
+                        ],
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Reenviar código',
+                    style: TextStyle(
+                      color: Colors.indigo,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
@@ -82,22 +139,22 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
         Container(
           height: 40,
           decoration: BoxDecoration(
-            border: Border.all(color: Color.fromRGBO(172, 30, 35, 1)),
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            border: Border.all(color: AppTheme.primaryColor),
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
           ),
           child: TextButton.icon(
-            icon: const Icon(
+            icon: Icon(
               Icons.close,
-              color: Color.fromRGBO(172, 30, 35, 1),
+              color: AppTheme.primaryColor,
             ),
             onPressed: () {
               Navigator.pop(context, 'Cancel');
               estadoUsuario.isLoading = false;
             },
-            label: const Text(
+            label: Text(
               'Cancelar',
               style: TextStyle(
-                color: Color.fromRGBO(172, 30, 35, 1),
+                color: AppTheme.primaryColor,
               ),
             ),
           ),
@@ -105,10 +162,12 @@ class _DialogoOtpState extends ConsumerState<DialogoOtp> {
         Container(
           height: 40,
           decoration: const BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
           child: TextButton.icon(
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(Colors.black),
+            ),
             icon: const Icon(
               Icons.check,
               color: Colors.white,

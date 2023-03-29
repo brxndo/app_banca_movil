@@ -1,5 +1,9 @@
 import 'package:app_banca_virtual_movil_2/config/providers/usuario_provider.dart';
+import 'package:app_banca_virtual_movil_2/ui/movil/agencias/agencias_page.dart';
 import 'package:app_banca_virtual_movil_2/ui/movil/login_page.dart';
+import 'package:app_banca_virtual_movil_2/ui/movil/simulador/simulador_page.dart';
+import 'package:app_banca_virtual_movil_2/ui/theme/app_theme.dart';
+import 'package:app_banca_virtual_movil_2/ui/utils/global.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,15 +17,15 @@ import '../widgets/icon_text_custom.dart';
 
 List<Image> imagenes = [
   const Image(
-    image: AssetImage('assets/images/giphy3.gif'),
+    image: AssetImage('assets/images/giphy3_2.gif'),
     width: 350,
   ),
   const Image(
-    image: AssetImage('assets/images/giphy2.gif'),
+    image: AssetImage('assets/images/giphy2_2.gif'),
     width: 350,
   ),
   const Image(
-    image: AssetImage('assets/images/giphy1.gif'),
+    image: AssetImage('assets/images/giphy1_2.gif'),
     width: 350,
   )
 ];
@@ -37,7 +41,9 @@ class _IndexPageState extends ConsumerState<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: globalIsDarkSelected
+          ? const Color.fromARGB(255, 50, 50, 50)
+          : AppTheme.backgorundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -145,41 +151,19 @@ class _IndexPageState extends ConsumerState<IndexPage> {
                       IconTextCustom(
                         label: "Simulador",
                         icono: Icons.calculate_rounded,
-                        onPressed: () =>
-                            Navigator.of(context).pushNamed('simulador'),
+                        onPressed: () => Navigator.of(context).push(
+                          AppRouter.createRouteEffect(const SimuladorPage()),
+                        ),
                       ),
                       IconTextCustom(
                         label: "Agencias",
                         icono: Icons.location_on,
-                        onPressed: () =>
-                            Navigator.of(context).pushNamed('agencias'),
+                        onPressed: () => Navigator.of(context).push(
+                          AppRouter.createRouteEffect(const AgenciasPage()),
+                        ),
                       ),
                     ],
                   ),
-                  // ElevatedButton(
-                  //   onPressed: () async {
-                  //     const storage = FlutterSecureStorage();
-                  //     bool tokenExists =
-                  //         await AuthHelper(secureStorage: storage)
-                  //             .isUserLoggedIn();
-
-                  //     String idUsuario =
-                  //         await AuthHelper(secureStorage: storage)
-                  //                 .getIdUsuario() ??
-                  //             '';
-
-                  //     if (tokenExists && idUsuario != '') {
-                  //       Navigator.of(context)
-                  //           .pushReplacementNamed('posicionconsolidada');
-                  //       return;
-                  //     }
-
-                  //     Navigator.of(context).pushNamed('login');
-                  //   },
-                  //   child: const Text(
-                  //     'Login',
-                  //   ),
-                  // ),
                 ],
               ),
             ),

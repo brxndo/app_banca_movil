@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../theme/app_theme.dart';
+import '../../utils/global.dart';
 import '../../widgets/ticket_painter.dart';
 
 class ResultadoCredito extends StatelessWidget {
@@ -38,8 +40,10 @@ class ResultadoCredito extends StatelessWidget {
           painter: TicketPainter(
             height: MediaQuery.of(context).size.height * 0.54,
             width: MediaQuery.of(context).size.width * 0.8,
-            borderColor: Color.fromRGBO(172, 30, 35, 1),
-            bgColor: ThemeData.light().scaffoldBackgroundColor,
+            borderColor: AppTheme.textColor,
+            bgColor: globalIsDarkSelected
+                ? Color.fromARGB(255, 50, 50, 50)
+                : AppTheme.backgorundColor,
           ),
           child: Column(
             children: [

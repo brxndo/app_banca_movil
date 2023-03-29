@@ -8,7 +8,7 @@ class NotificationsController {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: const TextStyle(fontSize: 17),
+        style: const TextStyle(fontSize: 15),
       ),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(

@@ -39,7 +39,8 @@ class OTPController {
               if (valorOtp == '456456') {
                 callback();
               } else {
-                NotificationsController.showSnackBar('Código OTP inválido');
+                NotificationsController.showSnackBar(
+                    'El código ingresado no es correcto');
               }
             },
           ),

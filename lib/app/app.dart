@@ -16,7 +16,7 @@ class AppArquitecturaLimpia2 extends ConsumerWidget {
       scaffoldMessengerKey: NotificationsController.messengerKey,
       routes: AppRouter.getRoutes(),
       initialRoute: AppRouter.initialRoute,
-      theme: theme.getTheme(),
+      theme: theme.themeData,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_banca_virtual_movil_2/ui/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -9,9 +10,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../domain/models/agencias/gateway/agencias_gateway.dart';
 
 class AgenciasAdapterApi extends AgenciasGateway {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
   late String darkMapStyle;
   late String lightMapStyle;
 
@@ -36,10 +34,9 @@ class AgenciasAdapterApi extends AgenciasGateway {
   }
 
   @override
-  Future<void> setMapStyle() async {
+  Future<void> setMapStyle(Completer<GoogleMapController> _controller) async {
     final controller = await _controller.future;
-    if (SchedulerBinding.instance.window.platformBrightness ==
-        Brightness.dark) {
+    if (globalIsDarkSelected) {
       controller.setMapStyle(darkMapStyle);
     } else {
       controller.setMapStyle(lightMapStyle);

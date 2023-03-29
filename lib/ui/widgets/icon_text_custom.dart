@@ -1,6 +1,8 @@
+import 'package:app_banca_virtual_movil_2/ui/utils/global.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import '../theme/app_theme_dark.dart';
 
 class IconTextCustom extends StatelessWidget {
   final String label;
@@ -18,8 +20,10 @@ class IconTextCustom extends StatelessWidget {
     return TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(AppTheme.backgorundColor),
-        ),
+            backgroundColor: globalIsDarkSelected
+                ? MaterialStatePropertyAll(AppThemeDark.backgorundColor)
+                : MaterialStatePropertyAll(AppTheme.backgorundColor),
+            elevation: MaterialStatePropertyAll(1)),
         child: SizedBox(
           height: 95,
           width: 95,

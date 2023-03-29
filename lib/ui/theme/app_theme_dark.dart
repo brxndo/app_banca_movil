@@ -15,7 +15,7 @@ class AppThemeDark {
   static Color cardColor = const Color.fromRGBO(40, 40, 40, 1);
   static Color textColor = const Color.fromRGBO(175, 175, 175, 1);
 
-  static final ThemeData theme = ThemeData.light().copyWith(
+  static final ThemeData theme = ThemeData.dark().copyWith(
       //Definir el color primario de la aplicacion
       primaryColor: primaryColor,
 

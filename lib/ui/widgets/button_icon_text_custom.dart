@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import '../theme/app_theme_dark.dart';
+import '../utils/global.dart';
 
 class ButtonIconTextCustom extends StatelessWidget {
   final String label;
@@ -18,7 +20,9 @@ class ButtonIconTextCustom extends StatelessWidget {
     return ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(AppTheme.backgorundColor),
+          backgroundColor: globalIsDarkSelected
+              ? MaterialStatePropertyAll(AppThemeDark.backgorundColor)
+              : MaterialStatePropertyAll(AppTheme.backgorundColor),
           elevation: const MaterialStatePropertyAll(5),
         ),
         child: SizedBox(
@@ -29,14 +33,22 @@ class ButtonIconTextCustom extends StatelessWidget {
             child: Column(
               children: [
                 Center(
-                    child: Icon(
-                  icono,
-                  size: 45,
-                  color: AppTheme.secondColor,
-                )),
+                  child: Icon(
+                    icono,
+                    size: 45,
+                    color: globalIsDarkSelected
+                        ? Colors.white
+                        : AppTheme.secondColor,
+                  ),
+                ),
                 Text(
                   label,
-                  style: TextStyle(color: AppTheme.secondColor, height: 1.1),
+                  style: TextStyle(
+                    color: globalIsDarkSelected
+                        ? Colors.white
+                        : AppTheme.secondColor,
+                    height: 1.1,
+                  ),
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 )

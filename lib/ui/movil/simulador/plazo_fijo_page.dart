@@ -1,4 +1,5 @@
 import 'package:app_banca_virtual_movil_2/config/providers/usuario_provider.dart';
+import 'package:app_banca_virtual_movil_2/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -64,19 +65,20 @@ class _PlazoFijoPageState extends ConsumerState<PlazoFijoPage> {
                   autocorrect: false,
                   style: const TextStyle(fontSize: 18),
                   keyboardType: TextInputType.number,
-                  cursorColor: Colors.black,
+                  cursorColor: AppTheme.textColor,
                   textAlign: TextAlign.center,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black)),
+                      borderSide: BorderSide(color: AppTheme.textColor),
+                    ),
                     hintText: '0.00',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintStyle: const TextStyle(color: Colors.grey),
                     label: Center(
                       child: Text(
                         'Monto \$',
-                        style: TextStyle(color: Colors.black54),
+                        style: TextStyle(color: AppTheme.textColor),
                       ),
                     ),
                   ),
@@ -92,9 +94,9 @@ class _PlazoFijoPageState extends ConsumerState<PlazoFijoPage> {
                 ),
               ),
             ),
-            const Text(
+            Text(
               'Frecuencia de Pago:',
-              style: TextStyle(color: Colors.black45),
+              style: TextStyle(color: AppTheme.textColor),
             ),
             Card(
               elevation: 3,
@@ -132,9 +134,9 @@ class _PlazoFijoPageState extends ConsumerState<PlazoFijoPage> {
             const SizedBox(
               height: 30,
             ),
-            const Text(
+            Text(
               'Plazo (días):',
-              style: TextStyle(color: Colors.black45),
+              style: TextStyle(color: AppTheme.textColor),
             ),
             Card(
               elevation: 3,

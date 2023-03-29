@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:supercharged/supercharged.dart';
 
 import '../../../controllers/NotificationsController.dart';
+import '../../theme/app_theme.dart';
 
 List<List<dynamic>> creditos = [
   [
@@ -224,19 +225,19 @@ class _CreditosPageState extends State<CreditosPage> {
                       autocorrect: false,
                       style: const TextStyle(fontSize: 18),
                       keyboardType: TextInputType.number,
-                      cursorColor: Colors.black,
+                      cursorColor: AppTheme.textColor,
                       textAlign: TextAlign.center,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black)),
+                            borderSide: BorderSide(color: AppTheme.textColor)),
                         hintText: '0.00',
                         hintStyle: TextStyle(color: Colors.grey),
                         label: Center(
                           child: Text(
                             'Monto \$',
-                            style: TextStyle(color: Colors.black54),
+                            style: TextStyle(color: AppTheme.textColor),
                           ),
                         ),
                       ),
@@ -260,22 +261,23 @@ class _CreditosPageState extends State<CreditosPage> {
                       autocorrect: false,
                       style: const TextStyle(fontSize: 18),
                       keyboardType: TextInputType.number,
-                      cursorColor: Colors.black,
+                      cursorColor: AppTheme.textColor,
                       textAlign: TextAlign.center,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
                         LengthLimitingTextInputFormatter(3),
                       ],
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black)),
+                          borderSide: BorderSide(color: AppTheme.textColor),
+                        ),
                         hintText: '12',
                         hintStyle: TextStyle(color: Colors.grey),
                         label: Center(
                           child: Text(
                             'Cuotas',
-                            style: TextStyle(color: Colors.black54),
+                            style: TextStyle(color: AppTheme.textColor),
                           ),
                         ),
                       ),
@@ -301,23 +303,24 @@ class _CreditosPageState extends State<CreditosPage> {
                             autocorrect: false,
                             style: const TextStyle(fontSize: 18),
                             keyboardType: TextInputType.number,
-                            cursorColor: Colors.black,
+                            cursorColor: AppTheme.textColor,
                             textAlign: TextAlign.center,
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly,
                               LengthLimitingTextInputFormatter(9),
                             ],
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
+                                  borderSide:
+                                      BorderSide(color: AppTheme.textColor)),
                               hintText: '00.00',
                               hintStyle: TextStyle(color: Colors.grey),
                               label: Center(
                                 child: Text(
                                   'Valor reposición del bien \$',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.black54),
+                                      fontSize: 15, color: AppTheme.textColor),
                                 ),
                               ),
                             ),
@@ -338,9 +341,9 @@ class _CreditosPageState extends State<CreditosPage> {
                 ),
               ),
             ),
-            const Text(
+            Text(
               'Tipo de Crédito:',
-              style: TextStyle(color: Colors.black45),
+              style: TextStyle(color: AppTheme.textColor),
             ),
             Card(
               elevation: 3,
@@ -379,9 +382,9 @@ class _CreditosPageState extends State<CreditosPage> {
             const SizedBox(
               height: 30,
             ),
-            const Text(
+            Text(
               'Frecuencia de Pago:',
-              style: TextStyle(color: Colors.black45),
+              style: TextStyle(color: AppTheme.textColor),
             ),
             Card(
               elevation: 3,
@@ -419,9 +422,9 @@ class _CreditosPageState extends State<CreditosPage> {
             const SizedBox(
               height: 30,
             ),
-            const Text(
+            Text(
               'Tipo de Cuota:',
-              style: TextStyle(color: Colors.black45),
+              style: TextStyle(color: AppTheme.textColor),
             ),
             Card(
               elevation: 3,
