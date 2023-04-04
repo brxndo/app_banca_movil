@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../../config/routes/app_router.dart';
+import '../../config/routes/app_router_movil.dart';
 import '../../controllers/NotificationsController.dart';
 import '../../infraestructure/helpers/auth_helper.dart';
 import '../widgets/button_icon_text_custom.dart';
@@ -86,7 +86,8 @@ class _IndexPageState extends ConsumerState<IndexPage> {
                         icono: Icons.person,
                         onTap: () {
                           Navigator.of(context).push(
-                              AppRouter.createRouteEffect(const LoginPage()));
+                              AppRouterMovil.createRouteEffect(
+                                  const LoginPage()));
                         },
                       ),
                       const SizedBox(
@@ -152,14 +153,16 @@ class _IndexPageState extends ConsumerState<IndexPage> {
                         label: "Simulador",
                         icono: Icons.calculate_rounded,
                         onPressed: () => Navigator.of(context).push(
-                          AppRouter.createRouteEffect(const SimuladorPage()),
+                          AppRouterMovil.createRouteEffect(
+                              const SimuladorPage()),
                         ),
                       ),
                       IconTextCustom(
                         label: "Agencias",
                         icono: Icons.location_on,
                         onPressed: () => Navigator.of(context).push(
-                          AppRouter.createRouteEffect(const AgenciasPage()),
+                          AppRouterMovil.createRouteEffect(
+                              const AgenciasPage()),
                         ),
                       ),
                     ],

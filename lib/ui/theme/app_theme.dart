@@ -6,13 +6,16 @@ import '../utils/global.dart';
 
 class AppTheme {
   static Color primaryColor = const Color.fromRGBO(172, 30, 35, 1);
-  static Color primaryColorOpacity = Color.fromARGB(255, 215, 101, 105);
+  static Color primaryColorOpacity = const Color.fromARGB(255, 215, 101, 105);
   static Color secondColor = globalIsDarkSelected
       ? const Color.fromRGBO(245, 245, 245, 1)
       : const Color.fromRGBO(89, 89, 89, 1);
   static Color backgorundColor = globalIsDarkSelected
       ? const Color.fromRGBO(26, 26, 26, 1)
       : const Color.fromRGBO(245, 245, 245, 1);
+  static Color textFieldColor = globalIsDarkSelected
+      ? const Color.fromRGBO(245, 245, 245, 1)
+      : const Color.fromRGBO(26, 26, 26, 1);
   static Color succesulColor = const Color.fromRGBO(102, 187, 106, 1);
   static Color errorColor = const Color.fromRGBO(229, 115, 115, 1);
   static Color alertColor = const Color.fromRGBO(255, 202, 40, 1);
@@ -25,7 +28,7 @@ class AppTheme {
       : const Color.fromRGBO(245, 245, 245, 1);
   static Color textColor = globalIsDarkSelected
       ? const Color.fromRGBO(175, 175, 175, 1)
-      : Color.fromARGB(255, 60, 60, 60);
+      : const Color.fromARGB(255, 60, 60, 60);
 
   static final ThemeData theme = ThemeData.light().copyWith(
       //Definir el color primario de la aplicacion
@@ -51,34 +54,41 @@ class AppTheme {
           backgroundColor: primaryColor, elevation: 10),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgorundColor,
+          backgroundColor: textFieldColor,
           foregroundColor: textColor,
-          elevation: 4,
+          disabledBackgroundColor: Colors.grey,
+          elevation: 0,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         ),
+      ),
+      buttonTheme: ButtonThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        disabledColor: Colors.grey,
+        buttonColor: Colors.black,
       ),
 
       //Definir el estilo para todos los inputs
       inputDecorationTheme: InputDecorationTheme(
-        floatingLabelStyle: TextStyle(color: primaryColor),
+        floatingLabelStyle: TextStyle(color: textFieldColor),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor),
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-          ),
+          borderSide: BorderSide(color: textFieldColor),
+          borderRadius: BorderRadius.all(Radius.circular(1)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor),
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-          ),
+          borderSide: BorderSide(color: textFieldColor),
+          borderRadius: const BorderRadius.all(Radius.circular(1)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: errorColor),
+          borderRadius: const BorderRadius.all(Radius.circular(1)),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: errorColor),
+          borderRadius: const BorderRadius.all(Radius.circular(1)),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-          ),
+          borderSide: BorderSide(color: textFieldColor),
+          borderRadius: BorderRadius.all(Radius.circular(1)),
         ),
       ),
 

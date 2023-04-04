@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../ui/movil/agencias/agencias_page.dart';
-import '../../ui/movil/index_page.dart';
-import '../../ui/movil/login_page.dart';
 import '../../ui/movil/posicion_consolidada_page.dart';
 import '../../ui/movil/simulador/simulador_page.dart';
 import '../../ui/movil/transferencia_page.dart';
+import '../../ui/web/index_page_web.dart';
 
-class AppRouter {
-  static const initialRoute = 'index';
+class AppRouterWeb {
+  static const initialRoute = 'login';
   static final paginasExternas = <MenuOptionsModel>[
-    MenuOptionsModel(
-      route: 'login',
-      nombre: 'Login Page',
-      screen: const LoginPage(),
-    ),
-
     MenuOptionsModel(
       route: 'posicionconsolidada',
       nombre: 'Posicion Consolidada Page',
@@ -57,7 +50,7 @@ class AppRouter {
 
   static Map<String, Widget Function(BuildContext)> getRoutes() {
     Map<String, Widget Function(BuildContext)> routes = {};
-    routes.addAll({'index': (BuildContext context) => const IndexPage()});
+    routes.addAll({'login': (BuildContext context) => const IndexPageWeb()});
     for (var item in paginasExternas) {
       routes.addAll({item.route: (BuildContext context) => item.screen!});
     }

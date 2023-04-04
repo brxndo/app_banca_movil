@@ -12,21 +12,19 @@ class CardContainer extends StatelessWidget {
     if (!Responsive.isMobile(context)) {
       ancho = 400;
     }
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
-      child: Container(
-        width: ancho,
-        padding: EdgeInsets.all(20),
-        decoration: _createCardShape(),
-        child: this.child,
-      ),
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.75,
+      width: ancho,
+      padding: EdgeInsets.symmetric(horizontal: 50),
+      decoration: _createCardShape(),
+      child: this.child,
     );
   }
 
   BoxDecoration _createCardShape() => BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(25),
-          boxShadow: [
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: 15,

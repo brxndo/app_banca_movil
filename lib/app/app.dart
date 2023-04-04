@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../config/providers/app_provider.dart';
-import '../config/routes/app_router.dart';
+import '../config/routes/app_router_movil.dart';
+import '../config/routes/app_router_web.dart';
 import '../controllers/NotificationsController.dart';
 
 class AppArquitecturaLimpia2 extends ConsumerWidget {
@@ -14,8 +16,9 @@ class AppArquitecturaLimpia2 extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: NotificationsController.messengerKey,
-      routes: AppRouter.getRoutes(),
-      initialRoute: AppRouter.initialRoute,
+      routes: kIsWeb ? AppRouterWeb.getRoutes() : AppRouterMovil.getRoutes(),
+      initialRoute:
+          kIsWeb ? AppRouterWeb.initialRoute : AppRouterMovil.initialRoute,
       theme: theme.themeData,
     );
   }

@@ -38,7 +38,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       },
       child: Scaffold(
         body: AuthBackground(
-          headerIcon: Icons.person,
           child: SingleChildScrollView(
             child: Column(
               children: [
