@@ -36,6 +36,11 @@ class _RecuperarPasswordPageWebState extends State<RecuperarPasswordPageWeb> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/pantallainterna.jpg"),
+                fit: BoxFit.cover),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [

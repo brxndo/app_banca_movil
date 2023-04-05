@@ -63,6 +63,11 @@ class _IndexPageWebState extends State<IndexPageWeb> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/pantallainterna.jpg"),
+                fit: BoxFit.cover),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -77,9 +82,12 @@ class _IndexPageWebState extends State<IndexPageWeb> {
                       //   size: 90,
                       //   color: AppTheme.primaryColor,
                       // ),
-                      Image.asset(
-                        'assets/images/avatar.gif',
-                        scale: 5,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(40),
+                        child: Image.asset(
+                          'assets/images/avatar.gif',
+                          scale: 5,
+                        ),
                       ),
                       Text(
                         'DaquiOnline - PERSONAS',

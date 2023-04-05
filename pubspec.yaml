@@ -47,6 +47,7 @@ dependencies:
   rolling_switch: ^0.0.2
   google_fonts: ^4.0.3
   flutter_custom_tab_bar: ^1.2.1
+  easy_stepper: ^0.5.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

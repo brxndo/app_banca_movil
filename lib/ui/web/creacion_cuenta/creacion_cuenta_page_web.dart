@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:easy_stepper/easy_stepper.dart';
 
 import '../../theme/app_theme.dart';
 import '../../utils/responsive.dart';
 
-class CreacionCuentaPageWeb extends StatelessWidget {
-  const CreacionCuentaPageWeb({super.key});
+class CreacionCuentaPageWeb extends StatefulWidget {
+  CreacionCuentaPageWeb({super.key});
+
+  @override
+  State<CreacionCuentaPageWeb> createState() => _CreacionCuentaPageWebState();
+}
+
+class _CreacionCuentaPageWebState extends State<CreacionCuentaPageWeb> {
+  int activeStep = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +35,11 @@ class CreacionCuentaPageWeb extends StatelessWidget {
         body: Container(
           width: double.infinity,
           height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/pantallainterna.jpg"),
+                fit: BoxFit.cover),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -52,13 +65,73 @@ class CreacionCuentaPageWeb extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Datos Personales',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
+                              ),
+                              EasyStepper(
+                                activeStep: activeStep,
+                                lineLength: 160,
+                                lineSpace: 5,
+                                lineType: LineType.normal,
+                                defaultLineColor: Colors.white,
+                                finishedLineColor: AppTheme.primaryColor,
+                                activeStepTextColor: Colors.black87,
+                                finishedStepTextColor: Colors.black87,
+                                internalPadding: 0,
+                                showLoadingAnimation: false,
+                                stepRadius: 8,
+                                showStepBorder: true,
+                                lineDotRadius: 1.5,
+                                activeLineColor: AppTheme.primaryColor,
+                                steps: [
+                                  EasyStep(
+                                    customStep: CircleAvatar(
+                                      radius: 8,
+                                      backgroundColor: Colors.white,
+                                      child: CircleAvatar(
+                                        radius: 7,
+                                        backgroundColor: activeStep >= 0
+                                            ? AppTheme.primaryColor
+                                            : Colors.white,
+                                      ),
+                                    ),
+                                    title: 'Datos Personales',
+                                  ),
+                                  EasyStep(
+                                    customStep: CircleAvatar(
+                                      radius: 8,
+                                      backgroundColor: Colors.white,
+                                      child: CircleAvatar(
+                                        radius: 7,
+                                        backgroundColor: activeStep >= 1
+                                            ? AppTheme.primaryColor
+                                            : Colors.white,
+                                      ),
+                                    ),
+                                    title: 'Contrato',
+                                  ),
+                                  EasyStep(
+                                    customStep: CircleAvatar(
+                                      radius: 8,
+                                      backgroundColor: Colors.white,
+                                      child: CircleAvatar(
+                                        radius: 7,
+                                        backgroundColor: activeStep >= 2
+                                            ? AppTheme.primaryColor
+                                            : Colors.white,
+                                      ),
+                                    ),
+                                    title: 'Seguridad',
+                                  ),
+                                ],
+                                onStepReached: (index) =>
+                                    setState(() => activeStep = index),
                               ),
                             ],
                           ),

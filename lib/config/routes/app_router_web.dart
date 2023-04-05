@@ -44,7 +44,7 @@ class AppRouterWeb {
     MenuOptionsModel(
       route: 'creacion_cuenta',
       nombre: 'Creacion de Cuenta Page',
-      screen: const CreacionCuentaPageWeb(),
+      screen: CreacionCuentaPageWeb(),
     ),
 
     // MenuOptionsModel(
