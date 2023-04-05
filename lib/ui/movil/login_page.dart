@@ -44,15 +44,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 const SizedBox(height: 160),
                 Center(
                   child: CardContainer(
+                      height: MediaQuery.of(context).size.height * 0.78,
                       child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      Text('Iniciar Sesión',
-                          style: Theme.of(context).textTheme.headline4),
-                      const SizedBox(height: 30),
-                      loginForm(context)
-                    ],
-                  )),
+                        children: [
+                          const SizedBox(height: 10),
+                          Text('Iniciar Sesión',
+                              style: Theme.of(context).textTheme.headline4),
+                          const SizedBox(height: 30),
+                          loginForm(context)
+                        ],
+                      )),
                 ),
                 const SizedBox(height: 50),
                 Padding(

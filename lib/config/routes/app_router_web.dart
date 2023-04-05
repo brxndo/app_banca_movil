@@ -1,13 +1,15 @@
+import 'package:app_banca_virtual_movil_2/ui/web/recuperar_password_page_web.dart';
 import 'package:flutter/material.dart';
 
 import '../../ui/movil/agencias/agencias_page.dart';
 import '../../ui/movil/posicion_consolidada_page.dart';
 import '../../ui/movil/simulador/simulador_page.dart';
 import '../../ui/movil/transferencia_page.dart';
+import '../../ui/web/creacion_cuenta/creacion_cuenta_page_web.dart';
 import '../../ui/web/index_page_web.dart';
 
 class AppRouterWeb {
-  static const initialRoute = 'login';
+  static const initialRoute = 'index';
   static final paginasExternas = <MenuOptionsModel>[
     MenuOptionsModel(
       route: 'posicionconsolidada',
@@ -33,6 +35,18 @@ class AppRouterWeb {
       screen: const AgenciasPage(),
     ),
 
+    MenuOptionsModel(
+      route: 'recuperar_password',
+      nombre: 'Recuperar Password Page',
+      screen: const RecuperarPasswordPageWeb(),
+    ),
+
+    MenuOptionsModel(
+      route: 'creacion_cuenta',
+      nombre: 'Creacion de Cuenta Page',
+      screen: const CreacionCuentaPageWeb(),
+    ),
+
     // MenuOptionsModel(
     //     route: 'registro',
     //     icono: Icons.card_membership,
@@ -50,7 +64,7 @@ class AppRouterWeb {
 
   static Map<String, Widget Function(BuildContext)> getRoutes() {
     Map<String, Widget Function(BuildContext)> routes = {};
-    routes.addAll({'login': (BuildContext context) => const IndexPageWeb()});
+    routes.addAll({'index': (BuildContext context) => const IndexPageWeb()});
     for (var item in paginasExternas) {
       routes.addAll({item.route: (BuildContext context) => item.screen!});
     }

@@ -66,50 +66,57 @@ class _IndexPageWebState extends State<IndexPageWeb> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 40),
-                Center(
-                  child: CardContainer(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 30),
-                        Text(
-                          'DaquiOnline - PERSONAS',
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                        const SizedBox(height: 20),
-                        Container(
-                          width: 225,
-                          child: CustomTabBar(
-                            tabBarController: _tabBarController,
-                            height: 35,
-                            itemCount: pageCount,
-                            builder: getTabbarChild,
-                            indicator: LinearIndicator(
-                              color: AppTheme.primaryColor,
-                              bottom: 5,
-                            ),
-                            pageController: _controller,
+                const SizedBox(height: 20),
+                CardContainer(
+                  height: MediaQuery.of(context).size.height * 0.78,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Icon(
+                      //   Icons.groups_2,
+                      //   size: 90,
+                      //   color: AppTheme.primaryColor,
+                      // ),
+                      Image.asset(
+                        'assets/images/avatar.gif',
+                        scale: 5,
+                      ),
+                      Text(
+                        'DaquiOnline - PERSONAS',
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        width: 225,
+                        child: CustomTabBar(
+                          tabBarController: _tabBarController,
+                          height: 35,
+                          itemCount: pageCount,
+                          builder: getTabbarChild,
+                          indicator: LinearIndicator(
+                            color: AppTheme.primaryColor,
+                            bottom: 5,
                           ),
+                          pageController: _controller,
                         ),
-                        Expanded(
-                          child: PageView.builder(
-                            controller: _controller,
-                            itemCount: pageCount,
-                            itemBuilder: (context, index) {
-                              if (index == 0) {
-                                return const LoginWeb();
-                              } else {
-                                return RegisterWeb();
-                              }
-                            },
-                          ),
+                      ),
+                      Expanded(
+                        child: PageView.builder(
+                          controller: _controller,
+                          itemCount: pageCount,
+                          itemBuilder: (context, index) {
+                            if (index == 0) {
+                              return const LoginWeb();
+                            } else {
+                              return RegisterWeb();
+                            }
+                          },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 40),
               ],
             ),
           ),

@@ -38,7 +38,7 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         foregroundColor: secondColor,
         color: backgorundColor,
-        elevation: 5,
+        elevation: 2,
       ),
 
       //Definir el diseño de todos los botones
@@ -47,6 +47,9 @@ class AppTheme {
           backgroundColor: backgorundColor,
           foregroundColor: secondColor,
         ),
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.black54,
       ),
 
       //Definir el diseño para todos los botones flotantes
@@ -72,24 +75,25 @@ class AppTheme {
         floatingLabelStyle: TextStyle(color: textFieldColor),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: textFieldColor),
-          borderRadius: BorderRadius.all(Radius.circular(1)),
+          borderRadius: BorderRadius.all(Radius.circular(3)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: textFieldColor),
-          borderRadius: const BorderRadius.all(Radius.circular(1)),
+          borderRadius: const BorderRadius.all(Radius.circular(3)),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: errorColor),
-          borderRadius: const BorderRadius.all(Radius.circular(1)),
+          borderRadius: const BorderRadius.all(Radius.circular(3)),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: errorColor),
-          borderRadius: const BorderRadius.all(Radius.circular(1)),
+          borderRadius: const BorderRadius.all(Radius.circular(3)),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: textFieldColor),
-          borderRadius: BorderRadius.all(Radius.circular(1)),
+          borderRadius: BorderRadius.all(Radius.circular(3)),
         ),
+        floatingLabelBehavior: FloatingLabelBehavior.never,
       ),
 
       //definir el color del fondo de pantalla
